@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>
+				Location
+			</title>
+						<header> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">		
+ 
+								<style>    
+							 body
+							{
+								text-align: center;
+							}
+						</style> 
+		</header>
+		</head>		
+	<body>
+        Search by Zip Code, City, or Town
+		<br><br><br>
+			Zip Code
+			<div>
+				<input name="Locations" list="Locations" placeholder="Zip Code">
+			<datalist id="Locations">
+
+
+					<Option value="71913">
+					<Option value="92688">
+					<Option value="90274">
+					<Option value="71901">
+
+
+			</datalist>
+		</div>
+		<a href="{{ url_for('index') }}">Go back</a>
+    </body>
+		
+	</html>
