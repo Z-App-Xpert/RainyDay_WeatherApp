@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block meta_specific %}
+    <title>Home</title>
+{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center pb-2">Welcome</h2>
+    <div class="row">
+        <div class="col-lg-6 col-12 pb-3 center">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Rainy Day App</h2>
+                    <form class="py-2" role="form" method="GET">
+                        <div class="form-group">
+                            <div class="mx-auto col-sm-10 pb-3 pt-2 text-center">
+                            	{% if not session['logged_in'] %}  
+                                <a href="/login" class="btn btn-outline-secondary btn-lg">Login</a>
+                                <a href="/register" class="btn btn-outline-secondary btn-lg">Register</a>
+                                {% else %}
+                                <a href="/login" class="btn btn-outline-secondary btn-lg">Search</a> 
+                                {% endif %}                               
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <hr>
+    {% if session['logged_in'] %}
+    <div class="row">
+        <div class="col-lg-6 col-12 pb-3 center">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">API</h2>
+                    <div class="alert alert-primary text-center" role="alert">
+                      <strong>API endpoint: </strong> /api/{zipcode}
+                    </div>                     
+                </div>    
+            </div>
+        </div>
+    </div> 
+    {% endif %}   
+</div>
+{% endblock %}

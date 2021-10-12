@@ -1,0 +1,29 @@
+Flask
+
+Flask-Session
+
+SQLAlchemy
+,  create_engine, Column, Integer, String, Text
+SQLAlchemy.orm scoped_session, sessionmaker
+SQLAlchemy.ext.declarative declarative_base
+import os
+import requests
+import json
+import time
+
+This function was added to a module in the zips.csv import file.  
+The file needs to be opened in excel and this function added to 
+a module in excel.
+
+Public Function leadzero(x)
+	Z = Len(x)
+	If Len(x) = 5 Then
+    			leadzero = x
+    		Exit Function
+	End If
+	If Z < 5 Then
+    		If Len(x) = 4 Then	'Data exceptions only of length 4.
+        		leadzero = "0" & x
+    		End If
+	End If
+End Function

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block meta_specific %}
+    <title>Location</title>
+{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center pb-2">{{city_data.city}}, {{city_data.state}} - {{city_data.zipcode}}</h2>
+	<div class="row">
+    	<div class="col-lg-6 col-12 pb-3 center">                
+            <div class="card h-100">
+            	<div class="card-body">
+                    {% if session['error'] != '' %}  
+                    <div class="form-group">
+                        <div class="mx-auto col-sm-10 pt-2">                         
+                            <div class="alert alert-danger text-center" role="alert">
+                              <strong>{{session['error']}}</strong>
+                            </div>   
+                        </div>                                             
+                    </div>    
+                    {% endif %}     
+            		<div class="alert alert-primary" role="alert">
+            			<strong>City</strong>:  {{city_data.city}}
+            		</div>	
+                    <div class="alert alert-primary" role="alert">
+                        <strong>State</strong>:  {{city_data.state}}
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Zipcode</strong>:  {{city_data.zipcode}}
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Latitude</strong>:  {{city_data.latitude}}
+                    </div>
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Longitude</strong>:  {{city_data.longitude}}
+                    </div>                                        
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Population</strong>:  {{city_data.population}}
+                    </div> 
+                    <div class="alert alert-primary" role="alert">
+                        <strong>No. of checkins</strong>:  {{city_data.checkin_count}}
+                    </div>                     
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Weather time</strong>:  {{city_data.time}}
+                    </div>                     
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Weather summary</strong>:  {{city_data.summary}}
+                    </div>                       
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Temperature</strong>:  {{city_data.temperature}}
+                    </div> 
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Dew Point</strong>:  {{city_data.dewPoint}}
+                    </div> 
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Humidity</strong>:  {{city_data.humidity}}
+                    </div>                 
+            	</div>
+            </div>
+        </div>
+    </div>    
+    <hr>
+    <div class="row">
+        <div class="col-lg-6 col-12 pb-3 center">
+            <div class="card h-100">
+                <div class="card-body">
+                    {% if not city_data.comment %}
+                    <h2 class="text-center mb-4">Checkin</h2>
+                    <form class="py-2" role="form" method="POST" action="/comment">
+                        <div class="form-group">
+                            <label for="inputSearchForm" class="sr-only form-control-label">Enter zip or city name</label>
+                            <div class="mx-auto col-sm-10">
+                                <input type="hidden" name="zipcode" value="{{city_data.zipcode}}">
+                                <textarea rows="3" name="comment" type="text" class="form-control" id="inputSearchForm" placeholder="Comment..." required=""></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mx-auto col-sm-10 pb-3 pt-2">
+                                <button type="submit" class="btn btn-outline-secondary btn-lg btn-block">Checkin</button>
+                            </div>
+                        </div>                        
+                        {% if session['error'] != '' %}  
+                        <div class="form-group">
+                            <div class="mx-auto col-sm-10 pt-2">                         
+                                <div class="alert alert-danger text-center" role="alert">
+                                  <strong>{{session['error']}}</strong>
+                                </div>   
+                            </div>                                             
+                        </div>    
+                        {% endif %}                        
+                    </form>
+                    {% else %}
+                        <h2 class="text-center mb-4">Checkin</h2>
+                        <p class="text-dark text-center">{{city_data.comment}}</p>
+                    {% endif %}
+                </div>
+            </div>          
+        </div>
+    </div>        
+</div>
+{% endblock %}
